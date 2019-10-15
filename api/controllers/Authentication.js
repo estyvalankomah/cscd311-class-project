@@ -4,6 +4,9 @@ const bcrypt = require('bcrypt');
 const Student = mongoose.model('Student');
 
 exports.register = async (req, res) => {
+
+    // res.render('register');
+
     let student = await Student.findOne({studentID:req.body.studentID});
     if(student){
         return res.status(400)
@@ -15,11 +18,12 @@ exports.register = async (req, res) => {
     }
 
     let newStudent = new Student(req.body);
+    let studentPin = req.body.studentPin;
 
     bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newStudent.pin, salt, (err, hash)=>{
+        bcrypt.hash(newStudent.studentPin, salt, (err, hash)=>{
            if(err) throw err;
-           newStudent.pin = hash;
+           newStudent.studentPin = hash;
            newStudent.save()
                .then((studentData)=>{
                    return res.status(200)
@@ -37,8 +41,8 @@ exports.register = async (req, res) => {
                throw err;
            })
         });
-     });
- };
+    });
+};
     
  
   exports.login = async (req, res) => {

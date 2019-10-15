@@ -1,15 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const validator = require('express-validator');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
 //import models
-require("./api/models/student.js");
-require("./api/models/admin.js");
-require("./api/models/hall.js");
-require("./api/models/block.js");
-require("./api/models/room.js");
+require("./models/student.js");
+require("./models/admin.js");
+require("./models/hall.js");
+require("./models/block.js");
+require("./models/room.js");
 
 //connect to database
 const URI = 'mongodb://localhost:27017/schooldb';
@@ -24,15 +25,19 @@ conn.then(() => console.log("Database Connection Done!"));
 
 const app = express();
 
-app.set('views', __dirname + '../views');
+// app.set('views', __dirname + '\..\views');
+// app.engine('html', require('ejs').renderFile);
+
 app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'html');
 
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(validator());
+// app.use(validator());
 
 //routes
 app.use('/api', require('./routes'));

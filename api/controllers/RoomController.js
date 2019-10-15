@@ -20,9 +20,9 @@ exports.createRoom = async(req, res) => {
 
 exports.getRooms = async (req, res) => {
     let room = await Room.find({
-        hallId:req.params.hallId,
+        block:req.body.block,
     });
-    const rooms = room.filter(roo => roo.usersId.length !== 4);
+    const rooms = room.filter(roo => roo.occupants.length !== 4);
     return res.status(200)
         .json({
             ok:true,
@@ -32,6 +32,7 @@ exports.getRooms = async (req, res) => {
         });
 };
 
+
 exports.applyToRoom = async (req, res) => {
     let student = await Student.findOne({
         studentID:req.body.studentID
@@ -39,16 +40,26 @@ exports.applyToRoom = async (req, res) => {
     let room = await Room.findOne({
         roomNo:req.body.roomNo
     });
-    if(student.room == null){
+    let block = await Block.findOne({
+        _id:room.block  
+    });
+    let hall = await Hall.findOne({
+        _id:block.hall
+    })
+    if(student.room == 'Not assigned'){
         if(room.occupants.length < 4 ){
             if(!room.occupants.includes(student.studentID)){
                 await room.update({
                     $push:{
-                        occupants: student.studentID
+                        occupants: req.body.studentID
                     }
                 });
                 await student.update({
-                    room:room.roomNo
+                    residentialStatus:"Assigned",
+                    room:room.roomNo,
+                    block:block.blockName,
+                    hall:hall.hallName,
+                    
                 });
                 return res.status(200)
                     .json({
@@ -84,7 +95,9 @@ exports.applyToRoom = async (req, res) => {
 };
 
 exports.getRoomsWithUsers = async(req, res) => {
-    let room = await Room.find().populate('users');
+    let room = await Room.findOne({
+        roomNo:req.body.roomNo
+    });
     return res.status(200)
             .json({
                 ok:true,

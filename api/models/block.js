@@ -12,4 +12,17 @@ const blockSchema = new mongoose.Schema({
     }
 });
 
+blockSchema.virtual('hallName', {
+    ref: 'Hall',
+    localField: 'hallId',
+    foreignField: '_id',
+    justOne: true
+});
+
  module.exports = mongoose.model('Block', blockSchema);
+
+//  hall: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Hall',
+//     default: 'Not assigned'
+// }

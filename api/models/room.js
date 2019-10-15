@@ -11,9 +11,25 @@ const roomSchema = new mongoose.Schema({
         default: 'Not assigned'
     },
     occupants: [{
-        type:mongoose.Schema.ObjectId,
-        ref:'User'
+        type: String
     }]
 });
 
+roomSchema.virtual('blockNo',{
+    ref:'Block',
+    localField:'blockId',
+    foreignField:'_id',
+    justOne:true
+});
+
  module.exports = mongoose.model('Room', roomSchema);
+
+//  block: {
+//     type: mongoose.Schema.ObjectId,
+//     ref: 'Block',
+//     default: 'Not assigned'
+// },
+// occupants: [{
+//     type:mongoose.Schema.ObjectId,
+//     ref:'User'
+// }]

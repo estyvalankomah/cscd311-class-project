@@ -27,20 +27,41 @@ const studentSchema = new mongoose.Schema({
         default: 'Not assigned'
     },
     hall: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Hall',
+        type: String,
         default: 'Not assigned'
     },
     block: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Block',
+        type: String,
         default: 'Not assigned'
     },
     room: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Room',
+        type: String,
         default: 'Not assigned'
     }
+ 
+});
+
+studentSchema.virtual('roomNo',{
+    ref:'Room',
+    localField:'room',
+    foreignField:'_id',
+    justOne:true
 });
 
  module.exports = mongoose.model('Student', studentSchema);
+
+//  hall: {
+//     type: mongoose.Schema.ObjectId,
+//     ref: 'Hall',
+//     default: 'Not assigned'
+// },
+// block: {
+//     type: mongoose.Schema.ObjectId,
+//     ref: 'Block',
+//     default: 'Not assigned'
+// },
+// room: {
+//     type: mongoose.Schema.ObjectId,
+//     ref: 'Room',
+//     default: 'Not assigned'
+// }

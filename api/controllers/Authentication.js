@@ -40,26 +40,7 @@ exports.register = async (req, res) => {
      });
  };
     
- exports.sanitize_login = (req, res, next) => {
-    req.sanitizeBody('id').toString();
-    req.sanitizeBody('pin').toString();
-    req.checkBody('id','Id field cannot be empty').notEmpty();
-    req.checkBody('pin','Pin field cannot be empty').notEmpty();
-    let errors = req.validationErrors();
-    if(errors){
-        //bad request
-        return res.status(400)
-            .json({
-                ok:false,
-                error:errors,
-                success:false
-            });
-    }
-  
-    next();
-  };
-  
-  
+ 
   exports.login = async (req, res) => {
       let student = await Student.findOne({
           studentID:req.body.studentID

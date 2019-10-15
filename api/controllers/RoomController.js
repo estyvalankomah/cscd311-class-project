@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const Student = mongoose.model('Student');
-const Hall = mongoose.model('Hall');
-const Block = mongoose.model('Block');
-const Room = mongoose.model('Room');
+const Student = require("../models/student.js");
+const Hall = require("../models/hall.js");
+const Block = require("../models/block.js");
+const Room = require("../models/room.js");
 
 
 exports.createRoom = async(req, res) => {

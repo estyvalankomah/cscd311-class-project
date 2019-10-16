@@ -20,9 +20,3 @@ blockSchema.virtual('hallName', {
 });
 
  module.exports = mongoose.model('Block', blockSchema);
-
-//  hall: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'Hall',
-//     default: 'Not assigned'
-// }

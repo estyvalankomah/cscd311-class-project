@@ -23,13 +23,3 @@ roomSchema.virtual('blockNo',{
 });
 
  module.exports = mongoose.model('Room', roomSchema);
-
-//  block: {
-//     type: mongoose.Schema.ObjectId,
-//     ref: 'Block',
-//     default: 'Not assigned'
-// },
-// occupants: [{
-//     type:mongoose.Schema.ObjectId,
-//     ref:'User'
-// }]

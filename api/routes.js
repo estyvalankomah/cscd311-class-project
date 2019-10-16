@@ -36,7 +36,7 @@ Route.route('/getRooms')
 Route.route('/getUsers')
 	.get(ErrorHandler.catchErrors(RoomController.getRoomsWithUsers));
 
-Route.route('/applyToRoom')
-    .post(ErrorHandler.catchErrors(RoomController.applyToRoom));
+Route.route('/selectRoom')
+    .post(ErrorHandler.catchErrors(RoomController.selectRoom));
 
 module.exports = Route;

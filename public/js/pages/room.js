@@ -33,9 +33,9 @@ $(document).ready(function () {
             data:{
                 hall:selectedhall
             },
-            success:function (dat) {
-                if(dat.ok){
-                    console.log(dat)
+            success:function (data) {
+                if(data.ok){
+                    console.log(data)
                     $('.block').children().remove();
                     $('.block').append(`
                            <option value="">Please select block</option>
@@ -100,7 +100,7 @@ $(document).ready(function () {
     function submitForm(selectedRoom){
             $.ajax({
                 method:'post',
-                url:'http://localhost:5000/api/applyToRoom',
+                url:'http://localhost:5000/api/selectRoom',
                 dataType:'json',
                 data:{
                     studentID:id,
@@ -109,10 +109,8 @@ $(document).ready(function () {
                 success:function (data) {
                     if(data.ok == true){
                         localStorage.setItem('student',JSON.stringify(data.data));
-    
-                        setTimeout(()=>{
-                            window.location.href = 'student.html'
-                        },2000);
+                        window.location.href = 'student.html'
+                        
                     }
                 },
                 error:function (err) {

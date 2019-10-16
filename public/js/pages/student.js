@@ -29,10 +29,8 @@ $(document).ready(function () {
             success:function (data) {
                 if(data.ok){
                     localStorage.setItem('studentHalls',JSON.stringify(data.data));
-
-                    setTimeout(()=>{
-                        window.location.href = 'hall.html'
-                    },2000);
+                    window.location.href = 'hall.html'
+                    
                 }
             },
             error:function (err) {

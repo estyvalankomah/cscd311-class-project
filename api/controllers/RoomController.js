@@ -22,7 +22,7 @@ exports.getRooms = async (req, res) => {
     let room = await Room.find({
         block:req.body.block,
     });
-    const rooms = room.filter(roo => roo.occupants.length !== 4);
+    const rooms = room.filter(rOOm => rOOm.occupants.length !== 4);
     return res.status(200)
         .json({
             ok:true,
@@ -33,7 +33,7 @@ exports.getRooms = async (req, res) => {
 };
 
 
-exports.applyToRoom = async (req, res) => {
+exports.selectRoom = async (req, res) => {
     let student = await Student.findOne({
         studentID:req.body.studentID
     });

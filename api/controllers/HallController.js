@@ -30,14 +30,14 @@ exports.getHalls = async(req, res) => {
 }
 
 exports.displayHalls = async(req, res) => {
-    // let student = await Student.findOne({
-    //     studentID:req.body.studentID
-    // });
-    // let room = await Room.findOne({
-    //     roomNo:req.body.roomNo
-    // });
-
     let student = await Student.find();
     const students = student.filter(stud => stud.residentialStatus == "Assigned");
-    console.log(students);
+    return res
+        .status(200)
+        .json({
+            ok:true,
+            error:false,
+            success:true,
+            data:students
+        })
 }

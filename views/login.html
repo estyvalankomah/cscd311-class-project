@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/font-awesome.min.css">
+
 </head>
 <body style="margin: 0;">
     <div>
@@ -13,18 +16,23 @@
             <h1>UNIVERSITY OF GHANA</h1>
         </div>
         <div>
-            <form action="" method="post">
+            <form action="" method="post" class="login">
                 <div>
                     <label for="id">Student ID</label>
-                    <input type="text" name="id" id="" placeholder="Enter your ID number here">
+                    <input type="text" name="id" id="id" placeholder="Enter your ID number here">
                 </div>
                 <div>
                     <label for="pin">Pin</label>
-                    <input type="text" name="pin" id="" placeholder="Enter your pin here">
+                    <input type="text" name="pin" id="pin" placeholder="Enter your pin here">
                 </div>
                 <button type="submit">Login</button>
             </form>
         </div>
     </div>
+
+    <script src="../public/js/jquery-3.4.1.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/pages/login.js"></script>
+
 </body>
 </html>

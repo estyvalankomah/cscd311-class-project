@@ -38,7 +38,7 @@ exports.applyToRoom = async (req, res) => {
         studentID:req.body.studentID
     });
     let room = await Room.findOne({
-        roomNo:req.body.roomNo
+        _id:req.body.room
     });
     let block = await Block.findOne({
         _id:room.block  

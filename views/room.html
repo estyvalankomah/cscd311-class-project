@@ -5,33 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Residential Application</title>
+
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/font-awesome.min.css">
+
 </head>
 <body style="margin: 0;">
     <div>
         <h1>Residential Application</h1>
     </div>
     <div>
-        <form action="" method="post">
+        <form action="" method="post" id="room">
            <div>
                 <label for="hall">Hall</label>
-                <select name="hall" id="hall">
-                    <option value="Please select hall"></option>
+                <select name="hall" id="hall" class="form-control hall">
+                    <option value="">Please select hall</option>
                 </select>
            </div>
            <div>
                 <label for="block">Block</label>
-                <select name="block" id="block">
-                    <option value="Please select block"></option>
+                <select name="block" id="block" class="form-control block">
+                    <option value="">Please select block</option>
                 </select>
            </div>
            <div>
                 <label for="room">Room</label>
-                <select name="room" id="room">
-                    <option value="Please select room"></option>
+                <select name="room"  class="form-control room">
+                    <option value="">Please select room</option>
                 </select>
            </div>
            <button type="submit">Submit</button>
         </form>
     </div>
+
+    <script src="../public/js/jquery-3.4.1.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/pages/room.js"></script>
+
 </body>
 </html>

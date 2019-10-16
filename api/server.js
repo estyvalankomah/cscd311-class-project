@@ -25,9 +25,8 @@ conn.then(() => console.log("Database Connection Done!"));
 
 const app = express();
 
-// app.set('views', __dirname + '\..\views');
-// app.engine('html', require('ejs').renderFile);
 
+//set view engine
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'html');
@@ -37,7 +36,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-// app.use(validator());
+// set static files
+app.use(express.static(path.join(__dirname, '../public')));
 
 //routes
 app.use('/api', require('./routes'));

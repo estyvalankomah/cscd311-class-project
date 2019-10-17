@@ -16,7 +16,7 @@ exports.createBlock = async(req, res) => {
 
 exports.getBlocks = async (req, res) => {
     let blocks = await Block.find({
-        hall:mongoose.Types.ObjectId(req.body.hall),
+        hall:req.query.hall
     });
     return res.status(200)
         .json({

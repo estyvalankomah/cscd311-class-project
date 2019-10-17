@@ -20,27 +20,16 @@ $(document).ready(function () {
     getHalls();
 
     function getBlocks(selectedhall){
-        if(selectedhall = ''){
-            $('.hall').children.remove();
-            return  $('.hall').append(`
-                        <option value="">Please select hall</option>
-                    `)
-        }
         $.ajax({
             method:'get',
-            url:'http://localhost:5000/api/getBlocks',
-            dataType:'json',
-            data:{
-                hall:selectedhall
-            },
+            url:`http://localhost:5000/api/getBlocks?hall=${selectedhall}`,
             success:function (data) {
                 if(data.ok){
-                    console.log(data)
                     $('.block').children().remove();
                     $('.block').append(`
                            <option value="">Please select block</option>
                         `)
-                    dat.data.map(function (block, i) {
+                    data.data.map(function (block, i) {
                         $('.block').append(`
                             <option value="${block._id}">${block.blockName}</option>
                         `)
@@ -56,23 +45,18 @@ $(document).ready(function () {
     $("select.hall").change(function(){
         let selectedhall = $(this).children("option:selected").val();
         getBlocks(selectedhall);
-        
     });
 
     function getRooms(selectedBlock){
-        if(selectedBlock = ''){
-            $('.block').children.remove();
-            return  $('.block').append(`
-                        <option value="">Please select block</option>
-                    `)
-        }
+        // if(selectedBlock = ''){
+        //     $('.block').children.remove();
+        //     return  $('.block').append(`
+        //                 <option value="">Please select block</option>
+        //             `)
+        // }
         $.ajax({
             method:'get',
-            url:'http://localhost:5000/api/getRooms',
-            dataType:'json',
-            data:{
-                block:selectedBlock
-            },
+            url:`http://localhost:5000/api/getRooms?block=${selectedBlock}`,
             success:function (data) {
                 if(data.ok){
                     $('.room').children().remove();
@@ -92,12 +76,12 @@ $(document).ready(function () {
         })
     }
 
-    $("select .block").change(function(){
+    $("select.block").change(function(){
         let selectedBlock = $(this).children("option:selected").val();
         getRooms(selectedBlock);
     });    
 
-    function submitForm(selectedRoom){
+    function submitForm(selectedRoom,id){
             $.ajax({
                 method:'post',
                 url:'http://localhost:5000/api/selectRoom',
@@ -109,8 +93,10 @@ $(document).ready(function () {
                 success:function (data) {
                     if(data.ok == true){
                         localStorage.setItem('student',JSON.stringify(data.data));
-                        window.location.href = 'student.html'
-                        
+                        setTimeout(() =>{
+                            window.location.href = 'student.html'
+                        },2000)
+                           
                     }
                 },
                 error:function (err) {
@@ -119,7 +105,7 @@ $(document).ready(function () {
             })
     }
     
-    $("select .room").change(function(){
+    $("select.room").change(function(){
         let selectedRoom = $(this).children("option:selected").val();
 
         $('#room').submit(function (e) {
@@ -127,6 +113,7 @@ $(document).ready(function () {
             let student = JSON.parse(localStorage.getItem('student'));
             let id = student.studentID;
 
+            console.log(student)
             submitForm(selectedRoom,id);
     
         });

@@ -25,7 +25,7 @@ Route.route('/getHalls')
     .get(ErrorHandler.catchErrors(HallController.getHalls));
     
 Route.route('/displayHalls')
-	.get(ErrorHandler.catchErrors(HallController.displayHalls));
+	.get(ErrorHandler.catchErrors(HallController.displayStudentsWithHalls));
 
 Route.route('/createRoom')
     .post(ErrorHandler.catchErrors(RoomController.createRoom));
@@ -34,7 +34,7 @@ Route.route('/getRooms')
 	.get(ErrorHandler.catchErrors(RoomController.getRooms));
 
 Route.route('/getUsers')
-	.get(ErrorHandler.catchErrors(RoomController.getRoomsWithUsers));
+	.get(ErrorHandler.catchErrors(RoomController.getRoomsWithStudents));
 
 Route.route('/selectRoom')
     .post(ErrorHandler.catchErrors(RoomController.selectRoom));

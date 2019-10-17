@@ -53,12 +53,12 @@ exports.selectRoom = async (req, res) => {
     if(student.room == 'Not assigned'){
         if(room.occupants.length < 4 ){
             if(!room.occupants.includes(student.studentID)){
-                await room.updateOne({
+                await room.update({
                     $push:{
                         occupants: req.body.studentID
                     }
                 });
-                await student.updateMany({
+                student.update({
                     residentialStatus:"Assigned",
                     room:room.roomNo,
                     block:block.blockName,
@@ -95,9 +95,9 @@ exports.selectRoom = async (req, res) => {
         });
 };
 
-exports.getRoomsWithUsers = async(req, res) => {
+exports.getRoomsWithStudents = async(req, res) => {
     let room = await Room.findOne({
-        roomNo:req.body.roomNo
+        roomNo:req.query.roomNo
     });
     return res.status(200)
             .json({

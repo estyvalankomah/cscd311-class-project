@@ -48,12 +48,6 @@ $(document).ready(function () {
     });
 
     function getRooms(selectedBlock){
-        // if(selectedBlock = ''){
-        //     $('.block').children.remove();
-        //     return  $('.block').append(`
-        //                 <option value="">Please select block</option>
-        //             `)
-        // }
         $.ajax({
             method:'get',
             url:`http://localhost:5000/api/getRooms?block=${selectedBlock}`,
@@ -92,10 +86,13 @@ $(document).ready(function () {
                 },
                 success:function (data) {
                     if(data.ok == true){
+                        console.log(data.data)
                         localStorage.setItem('student',JSON.stringify(data.data));
+                        let student = JSON.parse(localStorage.getItem('student'));
+                        console.log(student)
                         setTimeout(() =>{
                             window.location.href = 'student.html'
-                        },2000)
+                        },8000)
                            
                     }
                 },
@@ -113,8 +110,9 @@ $(document).ready(function () {
             let student = JSON.parse(localStorage.getItem('student'));
             let id = student.studentID;
 
-            console.log(student)
+            // console.log(student)
             submitForm(selectedRoom,id);
+            
     
         });
     })

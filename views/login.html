@@ -9,23 +9,23 @@
     <link rel="stylesheet" href="../public/css/font-awesome.min.css">
 
 </head>
-<body style="margin: 0;">
-    <div>
-        <div>
-            <p>logo</p>
-            <h1>UNIVERSITY OF GHANA</h1>
+<body style="margin: 0; background: #f6f2f6;">
+    <div style="margin-left: 30vw; border: 1px solid silver; border-radius: 10px; height: 102vh; width: 40vw; background: white; margin-top: 10vh; ">
+        <div style="border: 1px solid silver;background: #4d4dff; border-radius: 10px 10px 0 0; color: white;">
+            <img src="../public/images/University_of_Ghana.jpg" alt="logo" style="border-radius: 50%;margin-left: 30%; margin-top: 5%;">
+            <h1 class="ml-5">UNIVERSITY OF GHANA</h1>
         </div>
-        <div>
+        <div style="height: 50vh; margin: 10%;">
             <form action="" method="post" class="login">
-                <div>
+                <div class="form-group">
                     <label for="id">Student ID</label>
-                    <input type="text" name="id" id="id" placeholder="Enter your ID number here">
+                    <input type="text" name="id" id="id" placeholder="Enter your ID number here" class="form-control" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="pin">Pin</label>
-                    <input type="text" name="pin" id="pin" placeholder="Enter your pin here">
+                    <input type="password" name="pin" id="pin" placeholder="Enter your pin here" class="form-control" required>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
     </div>

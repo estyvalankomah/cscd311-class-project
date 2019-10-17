@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('.login').submit(function (e) {
         e.preventDefault();
         let id = $('#id').val();

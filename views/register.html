@@ -5,40 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register Student</title>
+
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/font-awesome.min.css">
 
 </head>
-<body style="margin: 0;">
-    <div>
-        <div>
-            <p>logo</p>
-            <h1>UNIVERSITY OF GHANA</h1>
+<body style="margin: 0; background: #f6f2f6;">
+    <div style="margin-left: 30vw; border: 1px solid silver; border-radius: 10px; height: 136vh; width: 40vw; background: white; margin-top: 10vh; ">
+        <div style="border: 1px solid silver;background: #4d4dff; border-radius: 10px 10px 0 0; color: white;">
+            <img src="../public/images/University_of_Ghana.jpg" alt="logo" style="border-radius: 50%;margin-left: 30%; margin-top: 5%;">
+            <h1 class="ml-5">UNIVERSITY OF GHANA</h1>
         </div>
-        <div>
+        <div style="height: 100vh; margin: 10%;">
             <form action="" method="post" class="register">
-                <div>
+                <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Enter student's name here" required>
+                    <input type="text" id="name" placeholder="Enter student's name here" class="form-control" required>
                 </div>
                 <div>
                     <label for="id">Student ID</label>
-                    <input type="text" id="id" placeholder="Enter student's ID number here" required>
+                    <input type="text" id="id" placeholder="Enter student's ID number here" class="form-control" required>
                 </div>
                 <div>
                     <label for="pin">Pin</label>
-                    <input type="text" id="pin" placeholder="Enter student's pin here" required>
+                    <input type="password" id="pin" placeholder="Enter student's pin here" class="form-control" required>
                 </div>
                 <div>
-                    <label for="gender">Gender</label>
-                    <input type="radio" name="gender" value="M">Male
-                    <input type="radio" name="gender" value="F">Female
+                    <label for="gender">Gender  </label>
+                    <input type="radio" name="gender"  value="M">Male
+                    <input type="radio" name="gender"  value="F">Female
                 </div>
                 <div>
                     <label for="id">Course</label>
-                    <input type="text" id="course" placeholder="Enter student's course(s) here" required>
+                    <input type="text" id="course" placeholder="Enter student's course(s) here" class="form-control" required><br>
                 </div>
-                <button type="submit">Add Student</button>
+                <button class="btn btn-primary" type="submit">Add Student</button><br><br>
             </form>
         </div>
     </div>

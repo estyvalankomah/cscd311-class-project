@@ -29,7 +29,7 @@ exports.getHalls = async(req, res) => {
         })
 }
 
-exports.displayHalls = async(req, res) => {
+exports.displayStudentsWithHalls = async(req, res) => {
     let student = await Student.find();
     const students = student.filter(stud => stud.residentialStatus == "Assigned");
     return res

@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const validator = require('express-validator');
 const mongoose = require('mongoose');
 const cors = require('cors');
 

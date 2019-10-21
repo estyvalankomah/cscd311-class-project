@@ -58,11 +58,14 @@ exports.selectRoom = async (req, res) => {
                         occupants: req.body.studentID
                     }
                 });
-                student.update({
+                await student.update({
                     residentialStatus:"Assigned",
                     room:room.roomNo,
                     block:block.blockName,
                     hall:hall.hallName    
+                });
+                student = await Student.findOne({
+                    studentID:req.body.studentID
                 });
                 return res.status(200)
                     .json({

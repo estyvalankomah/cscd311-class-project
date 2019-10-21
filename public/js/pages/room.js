@@ -86,13 +86,11 @@ $(document).ready(function () {
                 },
                 success:function (data) {
                     if(data.ok == true){
-                        console.log(data.data)
                         localStorage.setItem('student',JSON.stringify(data.data));
                         let student = JSON.parse(localStorage.getItem('student'));
-                        console.log(student)
                         setTimeout(() =>{
                             window.location.href = 'student.html'
-                        },8000)
+                        },2000)
                            
                     }
                 },

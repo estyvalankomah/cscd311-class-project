@@ -724,7 +724,6 @@ let createNelsonRooms = async()=>{
 
 createNelsonRooms();
 
-
-// function exit(){
-//     mongoose.disconnect();
-// }
+setTimeout(()=>{
+    mongoose.disconnect();
+}, 5000);
